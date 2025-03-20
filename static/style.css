@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #050505, #151515);
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: linear-gradient(to bottom, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+}
+
+#chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background: #111;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.message {
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background: linear-gradient(to right, #4CAF50, #81C784);
+    color: #000;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background: linear-gradient(to right, #2196F3, #64B5F6);
+    color: #fff;
+    align-self: flex-start;
+}
+
+.typing-indicator-container {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.user-typing {
+    align-self: flex-end;
+    background: linear-gradient(to right, #4CAF50, #81C784);
+    color: #000;
+}
+
+.bot-typing {
+    align-self: flex-start;
+    background: linear-gradient(to right, #2196F3, #64B5F6);
+    color: #fff;
+}
+
+.typing-indicator {
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border-radius: 15px;
+    animation: fadeInOut 1.5s infinite alternate;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.input-area {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #333;
+    background: linear-gradient(to top, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#chat-input {
+    flex-grow: 1;
+    width: 80%;
+    max-width: 600px;
+    padding: 10px 14px;
+    border: 1px solid #555;
+    border-radius: 24px;
+    margin-right: 10px;
+    background: #222;
+    color: #eee;
+    font-size: 1rem;
+    outline: none;
+}
+
+#chat-input:focus {
+    border-color: #66aaff;
+    box-shadow: 0 0 5px rgba(102, 170, 255, 0.5);
+}
+
+button {
+    padding: 10px 20px;
+    background: linear-gradient(to top, #444, #555);
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(to top, #555, #666);
+}
+
+.error-message {
+    background: linear-gradient(to right, #FF0000, #FF5050);
+    color: #000;
+}
+
+@keyframes typing-animation {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    #chat-input {
+        width: 95%;
+    }
+}
